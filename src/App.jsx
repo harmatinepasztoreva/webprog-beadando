@@ -1,35 +1,56 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import React, { useState } from "react";
+import AddSutiForm from "./forms/AddSutiForm";
 
-function App() {
-  const [count, setCount] = useState(0)
+const App = () => {
+  const kezdoSutik = [
+    { id: 1, nev: "Süni", tipus: "vegyes", ar: 500 },
+    { id: 2, nev: "Dobos", tipus: "torta", ar: 9000 },
+    { id: 3, nev: "Krémes", tipus: "krémes", ar: 250 },
+  ];
+
+  const [sutik, setSutik] = useState(kezdoSutik);
+
+  const addSuti = (suti) => {
+    const ujSuti = {
+      id: sutik.length + 1,
+      nev: suti.nev,
+      tipus: suti.tipus,
+      ar: suti.ar,
+    };
+
+    setSutik([...sutik, ujSuti]);
+  };
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
-}
+    <div>
+      <h1>React CRUD - Cukrászda</h1>
 
-export default App
+      <AddSutiForm addSuti={addSuti} />
+
+      <h2>Sütik listája</h2>
+
+      <table border="1" cellPadding="8">
+        <thead>
+          <tr>
+            <th>Azonosító</th>
+            <th>Név</th>
+            <th>Típus</th>
+            <th>Ár</th>
+          </tr>
+        </thead>
+        <tbody>
+          {sutik.map((suti) => (
+            <tr key={suti.id}>
+              <td>{suti.id}</td>
+              <td>{suti.nev}</td>
+              <td>{suti.tipus}</td>
+              <td>{suti.ar} Ft</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  );
+};
+
+export default App;
