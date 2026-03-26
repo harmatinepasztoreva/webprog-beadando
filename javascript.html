@@ -1,1 +1,180 @@
-<h1>Később fejlesztem</h1>
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="utf-8">
+    <title>JavaScript CRUD - Cukrászda</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background: #fffaf5;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        .suti-form {
+            border-style: solid;
+            padding: 10px;
+            margin: auto;
+            width: 50%;
+            background: white;
+        }
+
+        .suti-table {
+            border-style: solid;
+            padding: 20px;
+            margin: 20px auto 0 auto;
+            width: 70%;
+            background: white;
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        td, th {
+            border: 1px solid #dddddd;
+            padding: 8px;
+        }
+
+        tr:nth-child(even), thead {
+            background-color: #f2e6d9;
+        }
+
+        input {
+            width: 100%;
+            padding: 8px;
+            margin: 5px 0;
+        }
+
+        input[type=submit] {
+            width: 30%;
+            background-color: #6b3e26;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        a {
+            cursor: pointer;
+            color: blue;
+            margin-right: 10px;
+        }
+    </style>
+</head>
+<body>
+
+<h1>JavaScript CRUD - Cukrászda</h1>
+
+<div class="suti-form">
+    <form onsubmit="event.preventDefault(); onFormSubmit();">
+
+        <label>Süti neve*</label>
+        <input type="text" id="nev">
+
+        <label>Típus</label>
+        <input type="text" id="tipus">
+
+        <label>Ár</label>
+        <input type="number" id="ar">
+
+        <input type="submit" value="Mentés">
+    </form>
+</div>
+
+<div class="suti-table">
+    <table id="sutiLista">
+        <thead>
+            <tr>
+                <th>Név</th>
+                <th>Típus</th>
+                <th>Ár</th>
+                <th>Műveletek</th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+</div>
+
+<script>
+    let selectedIndex = null;
+
+    // Tömb - itt tároljuk az adatokat
+    let sutik = [
+        { nev: "Süni", tipus: "vegyes", ar: 500 },
+        { nev: "Dobos", tipus: "torta", ar: 9000 },
+        { nev: "Krémes", tipus: "krémes", ar: 250 }
+    ];
+
+    // Lista megjelenítése
+    function megjelenit() {
+        let tbody = document.querySelector("#sutiLista tbody");
+        tbody.innerHTML = "";
+
+        for (let i = 0; i < sutik.length; i++) {
+            let sor = `
+                <tr>
+                    <td>${sutik[i].nev}</td>
+                    <td>${sutik[i].tipus}</td>
+                    <td>${sutik[i].ar} Ft</td>
+                    <td>
+                        <a onclick="szerkeszt(${i})">Módosítás</a>
+                        <a onclick="torol(${i})">Törlés</a>
+                    </td>
+                </tr>
+            `;
+            tbody.innerHTML += sor;
+        }
+    }
+
+    // Új adat hozzáadása vagy módosítás
+    function onFormSubmit() {
+        let nev = document.getElementById("nev").value;
+        let tipus = document.getElementById("tipus").value;
+        let ar = document.getElementById("ar").value;
+
+        if (selectedIndex == null) {
+            // hozzáadás
+            sutik.push({ nev: nev, tipus: tipus, ar: ar });
+        } else {
+            // módosítás
+            sutik[selectedIndex] = { nev: nev, tipus: tipus, ar: ar };
+        }
+
+        megjelenit();
+        torolForm();
+    }
+
+    // Törlés
+    function torol(index) {
+        sutik.splice(index, 1);
+        megjelenit();
+    }
+
+    // Szerkesztés
+    function szerkeszt(index) {
+        document.getElementById("nev").value = sutik[index].nev;
+        document.getElementById("tipus").value = sutik[index].tipus;
+        document.getElementById("ar").value = sutik[index].ar;
+
+        selectedIndex = index;
+    }
+
+    // Űrlap törlése
+    function torolForm() {
+        document.getElementById("nev").value = "";
+        document.getElementById("tipus").value = "";
+        document.getElementById("ar").value = "";
+        selectedIndex = null;
+    }
+
+    // Indításkor megjelenítjük
+    megjelenit();
+</script>
+
+</body>
+</html>
