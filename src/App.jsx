@@ -1,54 +1,77 @@
-import React, { useState } from "react";
+import { useState } from "react";
+import "./App.css";
 import AddSutiForm from "./forms/AddSutiForm";
 
 const App = () => {
-  const kezdoSutik = [
-    { id: 1, nev: "Süni", tipus: "vegyes", ar: 500 },
-    { id: 2, nev: "Dobos", tipus: "torta", ar: 9000 },
-    { id: 3, nev: "Krémes", tipus: "krémes", ar: 250 },
-  ];
-
-  const [sutik, setSutik] = useState(kezdoSutik);
+  const [sutik, setSutik] = useState([]);
+  const [editingSuti, setEditingSuti] = useState(null);
 
   const addSuti = (suti) => {
-    const ujSuti = {
-      id: sutik.length + 1,
-      nev: suti.nev,
-      tipus: suti.tipus,
-      ar: suti.ar,
-    };
+    setSutik([...sutik, { ...suti, id: Date.now() }]);
+  };
 
-    setSutik([...sutik, ujSuti]);
+  const deleteSuti = (id) => {
+    setSutik(sutik.filter((s) => s.id !== id));
+  };
+
+  const startEdit = (suti) => {
+    setEditingSuti(suti);
+  };
+
+  const updateSuti = (updatedSuti) => {
+    setSutik(sutik.map((s) => (s.id === updatedSuti.id ? updatedSuti : s)));
+    setEditingSuti(null);
   };
 
   return (
-    <div>
-      <h1>React CRUD - Cukrászda</h1>
+    <div className="container">
+      <h1>Cukrászda CRUD</h1>
 
-      <AddSutiForm addSuti={addSuti} />
+      <div className="flex-row">
+        <div className="flex-large">
+          <AddSutiForm
+            addSuti={addSuti}
+            editingSuti={editingSuti}
+            updateSuti={updateSuti}
+          />
+        </div>
 
-      <h2>Sütik listája</h2>
+        <div className="flex-large">
+          <h2>Sütik listája</h2>
 
-      <table border="1" cellPadding="8">
-        <thead>
-          <tr>
-            <th>Azonosító</th>
-            <th>Név</th>
-            <th>Típus</th>
-            <th>Ár</th>
-          </tr>
-        </thead>
-        <tbody>
-          {sutik.map((suti) => (
-            <tr key={suti.id}>
-              <td>{suti.id}</td>
-              <td>{suti.nev}</td>
-              <td>{suti.tipus}</td>
-              <td>{suti.ar} Ft</td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
+          <table>
+            <thead>
+              <tr>
+                <th>Azonosító</th>
+                <th>Név</th>
+                <th>Típus</th>
+                <th>Ár</th>
+                <th>Műveletek</th>
+              </tr>
+            </thead>
+            <tbody>
+              {sutik.length > 0 ? (
+                sutik.map((suti) => (
+                  <tr key={suti.id}>
+                    <td>{suti.id}</td>
+                    <td>{suti.nev}</td>
+                    <td>{suti.tipus}</td>
+                    <td>{suti.ar} Ft</td>
+                    <td>
+                      <button onClick={() => startEdit(suti)}>Szerkesztés</button>
+                      <button onClick={() => deleteSuti(suti.id)}>Törlés</button>
+                    </td>
+                  </tr>
+                ))
+              ) : (
+                <tr>
+                  <td colSpan="5">Még nincs felvett süti.</td>
+                </tr>
+              )}
+            </tbody>
+          </table>
+        </div>
+      </div>
     </div>
   );
 };
