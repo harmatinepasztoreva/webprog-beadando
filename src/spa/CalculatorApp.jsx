@@ -1,7 +1,7 @@
 import { useState } from "react";
-import CompButton from "./CompButton";
+import CompButton from "./components/CompButton";
 
-function Calculator() {
+function CalculatorApp() {
   const [input, setInput] = useState("");
 
   function handleClick(value) {
@@ -41,7 +41,7 @@ function Calculator() {
         <CompButton value="7" onButtonClick={() => handleClick("7")} />
         <CompButton value="8" onButtonClick={() => handleClick("8")} />
         <CompButton value="9" onButtonClick={() => handleClick("9")} />
-        <CompButton value="*" onButtonClick={() => handleClick("*")} />
+        <CompButton value="" onButtonClick={() => handleClick("")} />
       </div>
 
       <div>
@@ -54,4 +54,4 @@ function Calculator() {
   );
 }
 
-export default Calculator;
+export default CalculatorApp;
