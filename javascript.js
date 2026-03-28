@@ -8,7 +8,7 @@ array1.push({"Id":"2","sutinev":"Gesztenyealagut","sutitipus":"vegyes","dijazott
 printArray();
 
 function printArray(){
-var table = document.getElementById("employeeList").getElementsByTagName('tbody')[0];
+var table = document.getElementById("sutiList").getElementsByTagName('tbody')[0];
 
 table.innerHTML="";
 var newRow;
