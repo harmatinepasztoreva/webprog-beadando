@@ -2,9 +2,9 @@
 
 var selectedIndex = null;
 var array1 = new Array(); 
-array1.push({"Id":"1","sutinev":"Süni","salary":"2000","city":"London"});
+array1.push({"Id":"1","sutinev":"Süni","sutitipus":"vegyes","dijazott":"London"});
 
-array1.push({"Id":"2","sutinev":"Gesztenyealagut","salary":"2500","city":"Paris"});
+array1.push({"Id":"2","sutinev":"Gesztenyealagut","sutitipus":"vegyes","dijazott":"Paris"});
 printArray();
 
 function printArray(){
@@ -22,9 +22,9 @@ cell1.innerHTML = array1[i].Id;
 cell2 = newRow.insertCell(1);
 cell2.innerHTML = array1[i].sutinev;
 cell3 = newRow.insertCell(2);
-cell3.innerHTML = array1[i].salary;
+cell3.innerHTML = array1[i].sutitipus;
 cell4 = newRow.insertCell(3);
-cell4.innerHTML = array1[i].city;
+cell4.innerHTML = array1[i].dijazott;
 cell4 = newRow.insertCell(4);
 
 cell4.innerHTML = '<a onClick="onEdit('+i+')">Edit</a>' + '<a onClick="onDelete('+i+')">Delete</a>';
@@ -49,14 +49,14 @@ function readFormData() {
 var formData = {};
 formData["Id"] = document.getElementById("Id").value;
 formData["sutinev"] = document.getElementById("sutinev").value;
-formData["salary"] = document.getElementById("salary").value;
-formData["city"] = document.getElementById("city").value;
+formData["sutitipus"] = document.getElementById("sutitipus").value;
+formData["dijazott"] = document.getElementById("dijazott").value;
 return formData;
 }
 
 function insertNewRecord(data) {
 
-array1.push({"Id":data.Id,"sutinev":data.sutinev,"salary":data.salary,"city":data.city});
+array1.push({"Id":data.Id,"sutinev":data.sutinev,"sutitipus":data.sutitipus,"dijazott":data.dijazott});
 
 printArray();
 }
@@ -64,8 +64,8 @@ printArray();
 function resetForm() {
 document.getElementById("Id").value = "";
 document.getElementById("sutinev").value = "";
-document.getElementById("salary").value = "";
-document.getElementById("city").value = "";
+document.getElementById("sutitipus").value = "";
+document.getElementById("dijazott").value = "";
 
 selectedIndex=null;
 }
@@ -73,16 +73,16 @@ selectedIndex=null;
 function onEdit(index) {
 document.getElementById("Id").value = array1[index].Id;
 document.getElementById("sutinev").value = array1[index].sutinev;
-document.getElementById("salary").value = array1[index].salary;
-document.getElementById("city").value = array1[index].city;
+document.getElementById("sutitipus").value = array1[index].sutitipus;
+document.getElementById("dijazott").value = array1[index].dijazott;
 selectedIndex=index;
 }
 
 function updateRecord(formData) {
 array1[selectedIndex].Id=formData.Id;
 array1[selectedIndex].sutinev=formData.sutinev;
-array1[selectedIndex].salary=formData.salary;
-array1[selectedIndex].city=formData.city;
+array1[selectedIndex].sutitipus=formData.sutitipus;
+array1[selectedIndex].dijazott=formData.dijazott;
 printArray();
 }
 function onDelete(index) {
