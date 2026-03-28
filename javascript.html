@@ -23,11 +23,27 @@
 </div>
 <div>
 <label>Sütemény típusa</label>
-<input type="text" name="sutitipus" id="sutitipus">
+    <select name="sutitipus" id="sutitipus">
+        <option value="">-- Válassz típust --</option>
+        <option value="vegyes">vegyes</option>
+        <option value="sós teasütemény">sós teasütemény</option>
+        <option value="bejgli">bejgli</option>
+        <option value="torta">torta</option>
+        <option value="tortaszelet">tortaszelet</option>
+        <option value="pite">pite</option>
+        <option value="tejszínes sütemény">tejszínes sütemény</option>
+        <option value="édes teasütemény">édes teasütemény</option>
+        <option value="különleges torta">különleges torta</option>
+        <option value="krémes">krémes</option>
+    </select>
 </div>
 <div>
 <label>Díjazott</label>
-<input type="text" name="dijazott" id="dijazott">
+ <select name="dijazott" id="dijazott">
+        <option value="">-- Válassz --</option>
+        <option value="igen">igen</option>
+        <option value="nem">nem</option>
+    </select>
 </div>
 <div class="form-action-buttons">
 <input type="submit" value="Submit">
