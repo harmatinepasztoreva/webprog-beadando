@@ -41,7 +41,7 @@ function CalculatorApp() {
         <CompButton value="7" onButtonClick={() => handleClick("7")} />
         <CompButton value="8" onButtonClick={() => handleClick("8")} />
         <CompButton value="9" onButtonClick={() => handleClick("9")} />
-        <CompButton value="" onButtonClick={() => handleClick("")} />
+        <CompButton value="*" onButtonClick={() => handleClick("*")} />
       </div>
 
       <div>
