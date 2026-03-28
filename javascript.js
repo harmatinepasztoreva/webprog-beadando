@@ -1,11 +1,10 @@
 
 
-
 var selectedIndex = null;
 var array1 = new Array(); 
 array1.push({"Id":"1","sutinev":"Süni","salary":"2000","city":"London"});
 
-array1.push({"Id":"2","sutinev":"Gesztenyealagút","salary":"2500","city":"Paris"});
+array1.push({"Id":"2","sutinev":"Gesztenyealagut","salary":"2500","city":"Paris"});
 printArray();
 
 function printArray(){
