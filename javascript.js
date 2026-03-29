@@ -2,9 +2,9 @@
 
 var selectedIndex = null;
 var array1 = new Array(); 
-array1.push({"Id":"1","sutinev":"Süni","sutitipus":"vegyes","dijazott":"London"});
+array1.push({"Id":"1","sutinev":"Süni","sutitipus":"vegyes","dijazott":"nem"});
 
-array1.push({"Id":"2","sutinev":"Gesztenyealagut","sutitipus":"vegyes","dijazott":"Paris"});
+array1.push({"Id":"2","sutinev":"Gesztenyealagut","sutitipus":"vegyes","dijazott":"igen"});
 printArray();
 
 function printArray(){
