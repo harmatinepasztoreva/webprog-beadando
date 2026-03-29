@@ -31,28 +31,28 @@ h1 {
     font-size: 28px;
     text-align: center;
 }
-        main {
+ main {
             text-align: center;
             margin-top: 0px;
-        }
+}
 
-        .menu {
-            list-style-type: none;
+.menu {
+      list-style-type: none;
     margin: 0;
      padding: 0;
      background-color: #6b3e26;
      display: flex;
      justify-content: center;
-        }
+    }
 
-        .menu a {
-             display: block;
-  color: white;
-  padding: 14px 16px;
-  text-decoration: none;
-        }
+     .menu a {
+            display: block;
+            color: white;
+            padding: 14px 16px;
+            text-decoration: none;
+          }
 
-        .menu a:hover {
+     .menu a:hover {
             border-top-left-radius: 15px;
             border-top-right-radius: 15px;
             background-color: #f8e8d0;
@@ -60,21 +60,37 @@ h1 {
             transform: scale(1.05);
         }
 
-        .menu a.active{
+     .menu a.active{
             border-top-left-radius: 15px;
             border-top-right-radius: 15px;
             background-color: #f8e8d0;
             color: black;
-            
-            
         }
 
-        footer {
-            background-color: #6b3e26;
-            color: white;
-            text-align: center;
-            padding: 15px;
-            position: fixed;
-            bottom: 0;
-            width: 100%;
-        }
+footer {
+    background-color: #6b3e26;
+    color: white;
+    text-align: center;
+    padding: 15px;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+ }
+
+.content {
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 20px;
+    text-align: left;
+}
+
+.content h2 {
+    color: #6b3e26;
+    margin-top: -10px;
+}
+
+.content p {
+    line-height: 2;
+    margin-top: 10px;
+}
+        
