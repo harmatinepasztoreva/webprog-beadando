@@ -27,7 +27,7 @@ cell4 = newRow.insertCell(3);
 cell4.innerHTML = array1[i].dijazott;
 cell4 = newRow.insertCell(4);
 
-cell4.innerHTML = '<a onClick="onEdit('+i+')">Edit</a>' + '<a onClick="onDelete('+i+')">Delete</a>';
+cell4.innerHTML = '<a onClick="onEdit('+i+')">Módosítás</a>' + ' ' + '<a onClick="onDelete('+i+')">Törlés</a>';
 }
 }
 
