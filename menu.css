@@ -1,93 +1,98 @@
 body {
     margin: 0;
     font-family: Arial, sans-serif;
-    background: #f8e8d0;
+    background-color: #f8e8d0;
 
     background-image: url("hatter.png");
     background-repeat: no-repeat;
-    background-position: top;
-    background-size: contain;
-    background-attachment: fixed;
+    background-position: center 50px;   /* vízszintesen és függőlegesen középre */
     background-size: 70% auto;
-    }
-
- header {
-            background-color: #6b3e26;
-            color: white;
-            padding: 20px;
-        }
-
-      .header-top {
-    display: flex;
-    align-items: center;
-    position: relative;
+    background-attachment: fixed;
 }
 
-/* LOGÓ KÖR ALAK + FEHÉR RÉSZ ELTÜNTETÉS */
-.logo {
-    width: 100px;
-    height: 100px;
-    object-fit: cover;
-    border-radius: 80%;   /* EZ CSINÁLJA KÖRRÉ */
-    position: absolute;
-    left: 300px; 
-    top: -10px;
-}
-h1 {
-    margin: 0 auto;
-    font-size: 28px;
-    text-align: center;
-}
- main {
-            text-align: center;
-            margin-top: 0px;
+/* FEJLÉC + MENÜ együtt maradjon fent */
+.topbar {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
 }
 
-.menu {
-        list-style-type: none;
-        margin: 0;
-        padding: 0;
-        background-color: #6b3e26;
-        display: flex;
-        justify-content: center;
-    }
-
-     .menu a {
-            display: block;
-            color: white;
-            padding: 14px 16px;
-            text-decoration: none;
-          }
-
-     .menu a:hover {
-            border-top-left-radius: 15px;
-            border-top-right-radius: 15px;
-            background-color: #f8e8d0;
-            color: black;
-            transform: scale(1.05);
-        }
-
-     .menu a.active{
-            border-top-left-radius: 15px;
-            border-top-right-radius: 15px;
-            background-color: #f8e8d0;
-            color: black;
-        }
-
-footer {
+/* FEJLÉC */
+header {
     background-color: #6b3e26;
     color: white;
+    padding: 15px 20px;
+}
+
+.header-top {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* LOGÓ */
+.logo {
+    width: 90px;
+    height: 90px;
+    object-fit: cover;
+    border-radius: 50%;
+    flex-shrink: 0;
+}
+
+/* CÍM */
+h1 {
+    margin: 0;
+    font-size: 28px;
     text-align: center;
-    padding: 15px;
-    position: fixed;
-    bottom: 0;
-    width: 100%;
- }
+    flex: 1;
+}
+
+/* MENÜ */
+.menu {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    background-color: #6b3e26;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.menu a {
+    display: block;
+    color: white;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+.menu a:hover {
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+    background-color: #f8e8d0;
+    color: black;
+    transform: scale(1.05);
+}
+
+.menu a.active {
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+    background-color: #f8e8d0;
+    color: black;
+}
+
+/* TARTALOM */
+main {
+    text-align: center;
+    margin-top: 0;
+}
 
 .content {
     max-width: 800px;
-    margin: -10px auto;
+    margin: 0 auto;
     padding: 20px;
+    padding: 10px 20px 90px 20px;
     text-align: left;
 }
 
@@ -101,4 +106,73 @@ footer {
     line-height: 1.6;
     margin-top: 10px;
 }
-        
+
+/* FOOTER */
+footer {
+    background-color: #6b3e26;
+    color: white;
+    text-align: center;
+    padding: 15px;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    z-index: 1000;
+}
+
+/* RESZPONZÍV NÉZET */
+@media (max-width: 768px) {
+    .header-top {
+        flex-direction: row;
+        align-items: center;
+        gap: 12px;
+    }
+
+    .logo {
+        width: 70px;
+        height: 70px;
+    }
+
+    h1 {
+        font-size: 22px;
+        text-align: left;
+    }
+
+    .menu {
+        justify-content: center;
+    }
+
+    .menu a {
+        padding: 12px 10px;
+        font-size: 14px;
+    }
+
+    body {
+        background-size: 90% auto;
+    }
+}
+
+@media (max-width: 480px) {
+    .header-top {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    h1 {
+        font-size: 20px;
+        text-align: left;
+    }
+
+    .menu a {
+        font-size: 13px;
+        padding: 10px 8px;
+    }
+
+    body {
+        background-size: 95% auto;
+    }
+}
+@media (max-width: 768px) {
+    body {
+        background-image: none;
+    }
+}
