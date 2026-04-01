@@ -7,25 +7,27 @@
 <link rel="stylesheet" href="menu.css">
 </head>
 <body>
-<header>
-     <div class="header-top">
-        <img src="logo.png" alt="Édes Liget Cukrászda logó" class="logo">
-        <h1>Web programozás-1 Előadás Házi feladat</h1>
-    </div>
-</header>
-<main>
+<div class="topbar">
+    <header>
+        <div class="header-top">
+            <img src="logo.png" alt="Édes Liget Cukrászda logó" class="logo">
+            <h1>Web programozás-1 Előadás Házi feladat</h1>
+        </div>
+    </header>
 
-    <div class="menu">
-        <a href="index.html">Kezdőlap</a>
+    <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+
+    <nav class="menu" id="mobileMenu">
+        <a href="index.html" >Kezdőlap</a>
         <a href="html5.html">HTML5</a>
         <a href="chartjs.html">ChartJS</a>
         <a href="ajax.html">AJAX</a>
         <a href="oojs.html">OOJS</a>
         <a href="react.html">React</a>
         <a href="spa.html">React SPA</a>
-        <a href="javascript.html" class="active">JavaScript</a>
-    </div>
-</main>
+        <a href="javascript.html"class="active">JavaScript</a>
+    </nav>
+</div>
 
 
 <div class="suti-form">
@@ -92,5 +94,11 @@
     <p>Készítette: Harmatiné Pásztor Éva (JBDAQO) - Deák Dávid (OPFHRV)</p>
 
 </footer>
+
+<script>
+function toggleMenu() {
+    document.getElementById("mobileMenu").classList.toggle("show");
+}
+</script>
 </body>
 </html>

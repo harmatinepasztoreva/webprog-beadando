@@ -176,3 +176,38 @@ footer {
         background-image: none;
     }
 }
+.menu-toggle {
+    display: none;
+    background-color: #6b3e26;
+    color: white;
+    border: none;
+    font-size: 28px;
+    padding: 10px 16px;
+    cursor: pointer;
+    width: 100%;
+    text-align: left;
+}
+
+@media (max-width: 768px) {
+    .menu-toggle {
+        display: block;
+    }
+
+    .menu {
+        display: none;
+        flex-direction: column;
+        align-items: flex-start;
+        width: 100%;
+        background-color: #6b3e26;
+    }
+
+    .menu.show {
+        display: flex;
+    }
+
+    .menu a {
+        width: 100%;
+        padding: 12px 20px;
+        box-sizing: border-box;
+    }
+}

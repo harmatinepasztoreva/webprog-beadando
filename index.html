@@ -16,7 +16,9 @@
         </div>
     </header>
 
-    <nav class="menu">
+    <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+
+    <nav class="menu" id="mobileMenu">
         <a href="index.html" class="active">Kezdőlap</a>
         <a href="html5.html">HTML5</a>
         <a href="chartjs.html">ChartJS</a>
@@ -26,7 +28,7 @@
         <a href="spa.html">React SPA</a>
         <a href="javascript.html">JavaScript</a>
     </nav>
-</div>>
+</div>
 
 <section class="content">
     <h2>Történetünk</h2>
@@ -76,6 +78,12 @@
     <p>Készítette: Harmatiné Pásztor Éva (JBDAQO) - Deák Dávid (OPFHRV)</p>
 
 </footer>
+
+<script>
+function toggleMenu() {
+    document.getElementById("mobileMenu").classList.toggle("show");
+}
+</script>
 
 </body>
 </html>
