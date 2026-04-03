@@ -1,52 +1,61 @@
-import { useState } from "react";
-import "./App.css";
-import SutiTable from "./tables/SutiTable";
-import AddSutiForm from "./forms/AddSutiForm";
+import React, { useState } from "react";
+import SutemenyTable from "/src/tables/SutemenyTable";
+import EditSutemenyForm from "/src/forms/EditSutemenyForm";
+import AddSutemenyForm from "/src/forms/AddSutemenyForm";
 
 const App = () => {
-  const [sutik, setSutik] = useState([]);
-  const [editingSuti, setEditingSuti] = useState(null);
+  const usersData = [
+    { id: 1, name: "Tania", username: "floppydiskette" },
+    { id: 2, name: "Craig", username: "siliconeidolon" },
+    { id: 3, name: "Ben", username: "benisphere" }
+  ];
+  const [users, setUsers] = useState(usersData);
+  const [currentUser, setCurrentUser] = useState("");
+  const [editing, setEditing] = useState(false);
 
-  const addSuti = (suti) => {
-    setSutik([...sutik, { ...suti, id: Date.now() }]);
+  const addUser = user => {
+    user.id = users.length + 1;
+    setUsers([...users, user]);
   };
-
-  const deleteSuti = (id) => {
-    setSutik(sutik.filter((s) => s.id !== id));
+  const deleteUser = id => {
+    setEditing(false);
+    setUsers(users.filter(user => user.id !== id));
   };
-
-  const startEdit = (suti) => {
-    setEditingSuti(suti);
+  const editRow = user => {
+    setEditing(true);
+    setCurrentUser(user);
   };
-
-  const updateSuti = (updatedSuti) => {
-    setSutik(sutik.map((s) => (s.id === updatedSuti.id ? updatedSuti : s)));
-    setEditingSuti(null);
+  const updateUser = (id, updatedUser) => {
+    setEditing(false);
+    setUsers(users.map(user => (user.id === id ? updatedUser : user)));
   };
 
   return (
-    <div className="container">
-      <h1>Cukrászda CRUD</h1>
-
-      <div className="flex-row">
-        <div className="flex-large">
-          <AddSutiForm
-            addSuti={addSuti}
-            editingSuti={editingSuti}
-            updateSuti={updateSuti}
-          />
+    <div>
+       <div>
+        <div>
+          <div>
+              <h2>{editing ? "Sütemény szerkesztése" : "Sütemény hozzáadása"}</h2>
+              {!editing ? (
+                <AddSutemenyForm
+                  addUser={addUser}
+                />
+              ):(
+                <EditSutemenyForm
+                  setEditing={setEditing}
+                  currentUser={currentUser}
+                  setCurrentUser={setCurrentUser}
+                  updateUser={updateUser}
+                />
+              )}
+          </div>
         </div>
-
-        <div className="flex-large">
-          <SutiTable
-            sutik={sutik}
-            startEdit={startEdit}
-            deleteSuti={deleteSuti}
-          />
+        <div>
+          <h2>Sütemények listája</h2>
+          <SutemenyTable users={users} editRow={editRow} deleteUser={deleteUser} />
         </div>
       </div>
     </div>
   );
 };
-
 export default App;
