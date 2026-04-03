@@ -1,20 +1,21 @@
 import React, { useState} from "react";
 
 const AddSutemenyForm = props => {
-  const [user, setUser] = useState({id:"",sutiNev:"",sutiTipus:"",dijazott:"igen"});
+  const [user, setUser] = useState({id:"",sutiNev:"",sutiTipus:"",dijazott:""});
   
-  const handleInputChange = event => {
+  const handleInputChange = (event) => {
     const { name, value } = event.target;
     setUser({ ...user, [name]: value });
   };
 
   return (
     <form
+      className="suti-form"
       onSubmit={event => {
         event.preventDefault();
         if (!user.sutiNev || !user.sutiTipus || !user.dijazott ) return;
         props.addUser(user);
-        setUser({name:"",username:""});
+        setUser({ id: "", sutiNev: "", sutiTipus: "", dijazott: "Igen" });
       }}
     >
       <label>Sütemény id</label>
@@ -39,7 +40,7 @@ const AddSutemenyForm = props => {
         value={user.sutiTipus}
         onChange={handleInputChange}
       >
-        <option value="">Válassz típust</option>
+        <option value="">-- Válassz típust --</option>
         <option value="vegyes">vegyes</option>
         <option value="sós teasütemény">sós teasütemény</option>
         <option value="bejgli">bejgli</option>
@@ -58,6 +59,7 @@ const AddSutemenyForm = props => {
         value={user.dijazott}
         onChange={handleInputChange}
       >
+        <option value="">-- Válassz --</option>
         <option value="Igen">Igen</option>
         <option value="Nem">Nem</option>
       </select>

@@ -1,7 +1,7 @@
 import React from "react";
 
 const SutemenyTable = props => (
-  <table>
+  <table className="list">
     <thead>
       <tr>
         <th>Id</th>
@@ -20,14 +20,14 @@ const SutemenyTable = props => (
             <td>{user.sutiTipus}</td>
             <td>{user.dijazott}</td>
             <td>
-              <button onClick={() => {props.editRow(user);}}>Edit</button>
-              <button onClick={() => props.deleteUser(user.id)}>Delete</button>
+              <button onClick={() => {props.editRow(user);}}>Módosítás</button>
+              <button onClick={() => props.deleteUser(user.id)}>Törlés</button>
             </td>
           </tr>
         ))
       ) : (
         <tr>
-          <td colSpan={3}>No users</td>
+          <td colSpan={5}>Nincs sütemény</td>
         </tr>
       )}
     </tbody>

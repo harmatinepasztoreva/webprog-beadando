@@ -2,15 +2,24 @@ import React, { useState } from "react";
 import SutemenyTable from "/src/tables/SutemenyTable";
 import EditSutemenyForm from "/src/forms/EditSutemenyForm";
 import AddSutemenyForm from "/src/forms/AddSutemenyForm";
+import "./App.css";
 
 const App = () => {
   const usersData = [
-    { id: 1, name: "Tania", username: "floppydiskette" },
-    { id: 2, name: "Craig", username: "siliconeidolon" },
-    { id: 3, name: "Ben", username: "benisphere" }
+    { id: 1, sutiNev: "Dobos torta", sutiTipus: "torta", dijazott: "Igen" },
+    { id: 2, sutiNev: "Krémes", sutiTipus: "krémes", dijazott: "Nem" },
+    { id: 3, sutiNev: "Bejgli", sutiTipus: "bejgli", dijazott: "Igen" },
   ];
+
+const initialFormState = {
+    id: null,
+    sutiNev: "",
+    sutiTipus: "",
+    dijazott: "Igen",
+  };
+
   const [users, setUsers] = useState(usersData);
-  const [currentUser, setCurrentUser] = useState("");
+  const [currentUser, setCurrentUser] = useState(initialFormState);
   const [editing, setEditing] = useState(false);
 
   const addUser = user => {
@@ -23,7 +32,12 @@ const App = () => {
   };
   const editRow = user => {
     setEditing(true);
-    setCurrentUser(user);
+    setCurrentUser({
+      id: user.id,
+      sutiNev: user.sutiNev,
+      sutiTipus: user.sutiTipus,
+      dijazott: user.dijazott,
+    });
   };
   const updateUser = (id, updatedUser) => {
     setEditing(false);
@@ -35,7 +49,7 @@ const App = () => {
        <div>
         <div>
           <div>
-              <h2>{editing ? "Sütemény szerkesztése" : "Sütemény hozzáadása"}</h2>
+              
               {!editing ? (
                 <AddSutemenyForm
                   addUser={addUser}
@@ -50,7 +64,7 @@ const App = () => {
               )}
           </div>
         </div>
-        <div>
+        <div className="suti-table">
           <h2>Sütemények listája</h2>
           <SutemenyTable users={users} editRow={editRow} deleteUser={deleteUser} />
         </div>
