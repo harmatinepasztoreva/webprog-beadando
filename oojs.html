@@ -1,1 +1,31 @@
+
+<header>
+        <meta charset="UTF-8">
+    <link rel="stylesheet" href="menu.css">
+        <div class="header-top">
+            <img src="logo.png" alt="Édes Liget Cukrászda logó" class="logo">
+            <h1>Web programozás-1 Előadás Házi feladat</h1>
+        </div>
+    </header>
+<body>
+    <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+
+    <nav class="menu" id="mobileMenu">
+        <a href="index.html">Főoldal</a>
+        <a href="javascript.html">JavaScript</a>
+        <a href="react.html">React</a>
+        <a href="spa.html">SPA</a>
+        <a href="fetchapi.html">Fetch API</a>
+        <a href="axios.html">Axios</a>
+        <a href="oojs.html"class="active">OOJS</a>
+
+    </nav>
+</div>
 <h1>Később fejlesztem</h1>
+</body>
+
+<script>
+function toggleMenu() {
+    document.getElementById("mobileMenu").classList.toggle("show");
+}
+</script>

@@ -10,21 +10,33 @@ body {
     background-attachment: fixed;
 }
 
+/* A GOMB ALAPSTÍLUSA ÉS ELREJTÉSE */
+.menu-toggle {
+    display: none; /* ASZTALIN REJTVE MARAD */
+    background-color: #6b3e26;
+    color: white;
+    border: none;
+    font-size: 28px;
+    padding: 10px 16px;
+    cursor: pointer;
+    text-align: right;
+}
+
 /* FEJLÉC + MENÜ együtt maradjon fent */
 .topbar {
     position: sticky;
     top: 0;
     z-index: 1000;
-}
+    }
 
 /* FEJLÉC */
-header {
-    background-color: #6b3e26;
-    color: white;
+ header {
+            background-color: #6b3e26;
+            color: white;
     padding: 15px 20px;
-}
+        }
 
-.header-top {
+      .header-top {
     display: flex;
     align-items: center;
     gap: 20px;
@@ -51,42 +63,42 @@ h1 {
 
 /* MENÜ */
 .menu {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    background-color: #6b3e26;
-    display: flex;
-    justify-content: center;
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        background-color: #6b3e26;
+        display: flex;
+        justify-content: center;
     flex-wrap: wrap;
-}
+    }
 
-.menu a {
-    display: block;
-    color: white;
-    padding: 14px 16px;
-    text-decoration: none;
-}
+     .menu a {
+            display: block;
+            color: white;
+            padding: 14px 16px;
+            text-decoration: none;
+          }
 
-.menu a:hover {
-    border-top-left-radius: 15px;
-    border-top-right-radius: 15px;
-    background-color: #f8e8d0;
-    color: black;
-    transform: scale(1.05);
-}
+     .menu a:hover {
+            border-top-left-radius: 15px;
+            border-top-right-radius: 15px;
+            background-color: #f8e8d0;
+            color: black;
+            transform: scale(1.05);
+        }
 
 .menu a.active {
-    border-top-left-radius: 15px;
-    border-top-right-radius: 15px;
-    background-color: #f8e8d0;
-    color: black;
-}
+            border-top-left-radius: 15px;
+            border-top-right-radius: 15px;
+            background-color: #f8e8d0;
+            color: black;
+        }
 
 /* TARTALOM */
 main {
     text-align: center;
     margin-top: 0;
-}
+ }
 
 .content {
     max-width: 800px;
@@ -106,7 +118,7 @@ main {
     line-height: 1.6;
     margin-top: 10px;
 }
-
+        
 /* FOOTER */
 footer {
     background-color: #6b3e26;
@@ -120,6 +132,7 @@ footer {
 }
 
 /* RESZPONZÍV NÉZET */
+/*
 @media (max-width: 768px) {
     .header-top {
         flex-direction: row;
@@ -134,7 +147,7 @@ footer {
 
     h1 {
         font-size: 22px;
-        text-align: left;
+        text-align: center;
     }
 
     .menu {
@@ -148,6 +161,55 @@ footer {
 
     body {
         background-size: 90% auto;
+    }
+}
+*/
+
+@media (max-width: 768px) {
+    body {
+        background-image: none; /* Összevonva a későbbi blokkból */
+        background-size: 90% auto;
+    }
+
+    .header-top {
+        flex-direction: row;
+        align-items: center;
+        gap: 12px;
+    }
+
+    .logo {
+        width: 70px;
+        height: 70px;
+    }
+
+    h1 {
+        font-size: 22px;
+        text-align: center;
+    }
+
+    /* Menü és Toggle logikája egy helyen */
+    .menu-toggle {
+        display: block;
+    }
+
+    .menu {
+        display: none;
+        flex-direction: column;
+        align-items: flex-start;
+        width: 100%;
+        background-color: #6b3e26;
+        justify-content: center;
+    }
+
+    .menu.show {
+        display: flex;
+    }
+
+    .menu a {
+        width: 100%;
+        padding: 12px 20px;
+        font-size: 14px;
+        box-sizing: border-box;
     }
 }
 
@@ -171,6 +233,7 @@ footer {
         background-size: 95% auto;
     }
 }
+/*
 @media (max-width: 768px) {
     body {
         background-image: none;
@@ -211,3 +274,4 @@ footer {
         box-sizing: border-box;
     }
 }
+    */
