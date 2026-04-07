@@ -32,7 +32,7 @@ cell4.innerHTML = '<a onClick="onEdit('+i+')">Módosítás</a>' + ' ' + '<a onCl
 }
 
 function onFormSubmit() {
-
+if (typeof e !== 'undefined') e.preventDefault();
 if (validate()) {
 
 var formData = readFormData();
@@ -79,11 +79,14 @@ selectedIndex=index;
 }
 
 function updateRecord(formData) {
-array1[selectedIndex].Id=formData.Id;
-array1[selectedIndex].sutinev=formData.sutinev;
-array1[selectedIndex].sutitipus=formData.sutitipus;
-array1[selectedIndex].dijazott=formData.dijazott;
-printArray();
+if (selectedIndex !== null && array1[selectedIndex]) {
+    array1[selectedIndex].Id=formData.Id;
+    array1[selectedIndex].sutinev=formData.sutinev;
+    array1[selectedIndex].sutitipus=formData.sutitipus;
+    array1[selectedIndex].dijazott=formData.dijazott;
+    printArray();
+    console.log("Módosítás sikeres!"); // Debugoláshoz
+    }
 }
 function onDelete(index) {
 
