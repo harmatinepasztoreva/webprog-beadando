@@ -1,20 +1,61 @@
-<?php
-ini_set('display_errors', 1);
-error_reporting(E_ALL);
+<?php 
+header("Content-Type: application/json"); 
+require "db.php"; 
+// $_SERVER tömbből kiolvassuk a küldési módszert: GET, POST, PUT, DELETE 
 
-// Beemeljük a javított kapcsolatot
-require_once 'db.php'; 
+$method = $_SERVER['REQUEST_METHOD']; 
+switch ($method) { 
+case 'GET':   
+try { 
+// Lekérdezzük a users tábla adatait az adatbázisból és visszaadjuk a hívó félnek: 
+$stmt = $pdo->query("SELECT * FROM suti"); 
+$readData=$stmt->fetchAll(); 
+// JSON objektumban továbbítjuk az adatokat: 
+echo json_encode(['status' => 'Read success!', "readData"=>$readData]); 
+} 
+catch(PDOException $e) { 
+echo json_encode(['status' => 'Read error!']); 
+} 
+break; 
+case 'POST': 
+try { 
+// A JSON-ban küldött adatokat átalakítjuk tömbbé: 
 
-try {
-    // Cseréld ki a 'suti' nevet arra a táblára, ami a te cukrászda adatbázisodban van!
-    // (Például: termekek, sutemenyek, vagy uzenetek)
-    $stmt = $pdo->query("SELECT * FROM suti LIMIT 10"); 
-    $adatok = $stmt->fetchAll();
-
-    header("Content-Type: application/json"); // Így a JavaScript fetch látni fogja
-    echo json_encode($adatok);
-
-} catch (PDOException $e) {
-    echo json_encode(["error" => "Lekérdezési hiba: " . $e->getMessage()]);
+            $data = json_decode(file_get_contents("php://input"), true); 
+// Új rekordot adunk a táblához a megadott name és email adatokkal: 
+//  Preperált lekérdezés: gyakorlaton tanultak róla.  
+// Az ID automatikusan kap értéket (AUTO_INCREMENT) 
+            $stmt = $pdo->prepare("INSERT INTO suti (nev, tipus, dijazott) VALUES (?, ?, ?)"); 
+            $stmt->execute([$data['nev'], $data['tipus'], $data['dijazott']]);
+            echo json_encode(['status' => 'Create success!']); 
+        } 
+        catch(PDOException $e) { 
+          echo json_encode(['status' => 'Create error!']); 
+        } 
+        break; 
+    case 'PUT': 
+        try { 
+            $data = json_decode(file_get_contents("php://input"), true); 
+// Módosítjuk az adott ID-jű rekord adatait: 
+            $stmt = $pdo->prepare("UPDATE suti SET nev=?, tipus=?, dijazott=? WHERE id=?"); 
+            $stmt->execute([$data['nev'], $data['tipus'], $data['dijazott'], $data['id']]);
+            echo json_encode(['status' => 'Update success!']); 
+        } 
+        catch(PDOException $e) { 
+          echo json_encode(['status' => 'Update error!']); 
+        } 
+        break; 
+    case 'DELETE': 
+        try { 
+            $data = json_decode(file_get_contents("php://input"), true); 
+// Töröljük az adott ID-jű rekordot: 
+            $stmt = $pdo->prepare("DELETE FROM suti WHERE id=?"); 
+            $stmt->execute([$data['id']]); 
+            echo json_encode(['status' => 'Delete success!']); 
+        } 
+        catch(PDOException $e) { 
+          echo json_encode(['status' => 'Delete error!']); 
+        } 
+        break; 
 }
 ?>
