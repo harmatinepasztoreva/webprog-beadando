@@ -65,7 +65,7 @@ const initialFormState = {
           </div>
         </div>
         <div className="suti-table">
-          <h2>Sütemények listája</h2>
+         
           <SutemenyTable users={users} editRow={editRow} deleteUser={deleteUser} />
         </div>
       </div>

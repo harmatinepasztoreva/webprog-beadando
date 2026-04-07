@@ -1,4 +1,4 @@
-.suti-form {
+.suti-form { /*Adatbeviteli mező*/
   border-style: none;
   background-color: #d4b3a3;
   padding: 10px;
@@ -11,7 +11,7 @@
 .suti-table {
   border-style: none;
   padding: 20px;
-  margin: 30px auto 120 auto;
+  margin: 30px auto 120px auto;
   width: 70%;
   background-color: rgba(255, 255, 255, 0.15);
   border-radius: 8px;
