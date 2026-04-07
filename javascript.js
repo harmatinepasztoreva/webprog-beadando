@@ -4,7 +4,7 @@ var selectedIndex = null;
 var array1 = new Array(); 
 array1.push({"Id":"1","sutinev":"Süni","sutitipus":"vegyes","dijazott":"nem"});
 
-array1.push({"Id":"2","sutinev":"Gesztenyealaguuuut","sutitipus":"vegyes","dijazott":"igen"});
+array1.push({"Id":"2","sutinev":"Gesztenyealagút","sutitipus":"vegyes","dijazott":"igen"});
 printArray();
 
 function printArray(){
