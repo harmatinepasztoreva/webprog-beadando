@@ -17,10 +17,17 @@ border-style: none;
 padding: 20px;
 /* width: 50%; */
 margin: 30px auto 0 auto;
-width: 70%;
-/* border: 3px solid green; */
-/* padding: 10px; */
+width: 90%;
+max-width: 1200px;   /* De ne legyen túl széles óriási monitoron */
+min-width: 300px;    /* Ez megakadályozza, hogy kicsinyítésnél eltűnjön */
+overflow-x: auto;    /* Ha mégis túl kicsi a hely, legyen görgetősáv, ne tűnjön el */
+display: block;
 }
+
+.suti-table table {
+    width: 100%;
+}
+
 body > table{
 width: 80%;
 }
