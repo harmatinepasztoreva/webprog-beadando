@@ -1,1 +1,6 @@
-<h1>Később fejlesztem</h1>
+<script>
+    fetch('read.php')
+        .then(res => res.text()) // Először szövegként nézzük meg
+        .then(data => console.log("Szerver válasza:", data))
+        .catch(err => console.error("Hiba a híváskor:", err));
+</script>
