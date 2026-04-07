@@ -1,16 +1,47 @@
 <!DOCTYPE html>
 <html lang="hu">
 <head>
-  <meta charset="UTF-8" />
-  <title>SPA</title>
+ <meta charset="UTF-8">
+    <title>SPA</title>
+    <link rel="stylesheet" href="menu.css">
 </head>
 <body>
+  <div class="topbar">
+    <header>
+        <div class="header-top">
+            <img src="logo.png" alt="Édes Liget Cukrászda logó" class="logo">
+            <h1>Web programozás-1 Előadás Házi feladat</h1>
+            <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+        </div>
+    </header>
+
+    <nav class="menu" id="mobileMenu">
+       <a href="index.html" >Főoldal</a>
+        <a href="javascript.html">JavaScript</a>
+        <a href="react.html" >React</a>
+        <a href="spa.html"class="active">SPA</a>
+        <a href="fetchapi.html">Fetch API</a>
+        <a href="axios.html">Axios</a>
+        <a href="oojs.html">OOJS</a>
+    </nav>
+</div>
   <div id="root"></div>
   <script type="module" src="/src/spa-main.jsx"></script>
 
+ 
+
+<footer>
+    <p>Készítette: Harmatiné Pásztor Éva (JBDAQO) - Deák Dávid (OPFHRV)</p>
+
+</footer>
 
 
-
+<script>
+  function toggleMenu() {
+    const menu = document.getElementById("mobileMenu");
+    menu.classList.toggle("show");
+  }
+</script>
 
 </body>
 </html>
