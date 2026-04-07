@@ -48,7 +48,7 @@ const EditSutemenyForm = props => {
         <option value="Nem">Nem</option>
       </select>
 
-      <button type="button" onClick={() => props.editRow(user)}>Módosítás</button>
+      <button type="submit">Mentés</button>
       <button type="button" onClick={() => props.deleteUser(user.id)}>Törlés</button>
     </form>
   );

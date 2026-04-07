@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import SutemenyTable from "/src/tables/SutemenyTable";
 import EditSutemenyForm from "/src/forms/EditSutemenyForm";
 import AddSutemenyForm from "/src/forms/AddSutemenyForm";
-import "./App.css";
+import "./React.css";
 
 const App = () => {
   const usersData = [
