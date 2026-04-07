@@ -1,27 +1,20 @@
 <?php
-// Hibakeresés bekapcsolása (hogy lásd, ha baj van)
 ini_set('display_errors', 1);
 error_reporting(E_ALL);
 
-$db_file = 'adatbazisod_neve.db'; // <--- ÍRD ÁT A SAJÁT FÁJLNEVEDRE!
+// Beemeljük a javított kapcsolatot
+require_once 'db.php'; 
 
 try {
-    $pdo = new PDO("sqlite:" . $db_file, null, null, [
-        PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
-        PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC
-    ]);
-
-    // Próbáljunk meg lekérni adatokat (Cseréld le a 'users'-t a te táblád nevére!)
-    $stmt = $pdo->query("SELECT * FROM users LIMIT 5");
+    // Cseréld ki a 'suti' nevet arra a táblára, ami a te cukrászda adatbázisodban van!
+    // (Például: termekek, sutemenyek, vagy uzenetek)
+    $stmt = $pdo->query("SELECT * FROM suti LIMIT 10"); 
     $adatok = $stmt->fetchAll();
 
-    echo "<h1>Siker! A kapcsolat él.</h1>";
-    echo "<pre>";
-    print_r($adatok); // Kiírja az adatokat olvasható formában
-    echo "</pre>";
+    header("Content-Type: application/json"); // Így a JavaScript fetch látni fogja
+    echo json_encode($adatok);
 
 } catch (PDOException $e) {
-    echo "<h1>Hiba történt!</h1>";
-    echo "Üzenet: " . $e->getMessage();
+    echo json_encode(["error" => "Lekérdezési hiba: " . $e->getMessage()]);
 }
 ?>

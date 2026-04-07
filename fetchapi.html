@@ -1,6 +1,34 @@
-<script>
-    fetch('read.php')
-        .then(res => res.text()) // Először szövegként nézzük meg
-        .then(data => console.log("Szerver válasza:", data))
-        .catch(err => console.error("Hiba a híváskor:", err));
-</script>
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <title>CRUD Alkalmazás</title>
+</head>
+<body>
+    <h1>Adatbázis adatai</h1>
+    <ul id="lista"></ul> <script>
+        // Ez a függvény hívja meg a PHP-t
+        async function adatokLetoltese() {
+            try {
+                // A fetch az api.php-t hívja meg, nem az adatbázist közvetlenül!
+                const valasz = await fetch('read.php');
+                const adatok = await valasz.json();
+                
+                const listaElem = document.getElementById('lista');
+                listaElem.innerHTML = ""; // Ürítés
+
+                adatok.forEach(sor => {
+                    const li = document.createElement('li');
+                    // Cseréld ki a 'nev' részt arra, ami az oszlopod neve az SQL-ben!
+                    li.textContent = sor.name || sor.nev; 
+                    listaElem.appendChild(li);
+                });
+            } catch (hiba) {
+                console.error("Hiba történt a fetch során:", hiba);
+            }
+        }
+
+        adatokLetoltese();
+    </script>
+</body>
+</html>
