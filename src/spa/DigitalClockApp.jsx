@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
-import "./App.css";
 
-function App() {
+
+function DigitalClockApp() {
   // State to hold current time
   const [time, setTime] = useState(new Date());
 
@@ -31,11 +31,16 @@ function App() {
 
   return (
     <div className="App">
-      <h1>🕒 Digital Clock</h1>
+      <h1>🕒 Digitális Óra</h1>
       <div className="clock">{formatTime(time)}</div>
-      <p>{time.toDateString()}</p>
+      <p>{time.toLocaleDateString("hu-HU",{
+        year: "numeric",
+        month: "long",
+        day: "numeric",
+        weekday: "long",
+      })}</p>
     </div>
   );
 }
 
-export default App;
+export default DigitalClockApp;
