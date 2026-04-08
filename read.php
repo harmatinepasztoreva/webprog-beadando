@@ -10,8 +10,8 @@ try {
 // Lekérdezzük a users tábla adatait az adatbázisból és visszaadjuk a hívó félnek: 
 $stmt = $pdo->query("SELECT * FROM suti"); 
 $readData=$stmt->fetchAll(); 
-// JSON objektumban továbbítjuk az adatokat: 
-echo json_encode(['status' => 'Read success!', "readData"=>$readData]); 
+// JSON objektumban továbbítjuk az adatokat, csak akkor ír hibaüzenetet, ha nem sikerül a beolvasás. 
+echo json_encode(['status' => '', "readData"=>$readData]); 
 } 
 catch(PDOException $e) { 
 echo json_encode(['status' => 'Read error!']); 

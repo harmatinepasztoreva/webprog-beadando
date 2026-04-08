@@ -13,11 +13,14 @@ function fetchUsers() {
         document.getElementById("message").innerText = data.status; 
         let rows = ""; 
         data.readData.forEach(user => { 
+            //igen nemmé alakítás
+            let dijazottSzoveg = (user.dijazott == 0) ? "nem" : "igen";
             rows += ` 
             <tr> 
                 <td>${user.id}</td> 
                 <td>${user.nev}</td> 
-                <td>${user.tipus}</td> 
+                <td>${user.tipus}</td>
+                <td>${dijazottSzoveg}</td>
                 <td> 
                     <button onclick='editSuti(${JSON.stringify(user)})'>Módosítás</button> 
                     <button onclick='deleteSuti(${user.id})'>Törlés</button> 

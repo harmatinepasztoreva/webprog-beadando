@@ -33,61 +33,70 @@
 </div>
     <div> 
 
-        <p id="message"></p> 
+<div class="suti-form"> <h3 id="addedit">Új sütemény hozzáadása</h3> 
+    <p id="message"></p> 
 
-<h3 id="addedit"></h3> 
-
-<form id="userForm"> 
- 
-<input type="hidden" id="id"> 
-<div> 
-<div> <label>Név*</label>
-<input type="text" id="nev" placeholder="Név" required> 
-</div> 
-<div> 
-<label>Sütemény típusa</label>
-    <select name="sutitipus" id="sutitipus">
-        <option value="">-- Válassz típust --</option>
-        <option value="vegyes">vegyes</option>
-        <option value="sós teasütemény">sós teasütemény</option>
-        <option value="bejgli">bejgli</option>
-        <option value="torta">torta</option>
-        <option value="tortaszelet">tortaszelet</option>
-        <option value="pite">pite</option>
-        <option value="tejszínes sütemény">tejszínes sütemény</option>
-        <option value="édes teasütemény">édes teasütemény</option>
-        <option value="különleges torta">különleges torta</option>
-        <option value="krémes">krémes</option>
-    </select>
-</div> 
-<div> 
-<label>Díjazott</label>
- <select name="dijazott" id="dijazott">
-        <option value="">-- Válassz --</option>
-        <option value="igen">igen</option>
-        <option value="nem">nem</option>
-    </select>
-</div> 
-<div> 
-
-<div class="form-action-buttons">
-<input type="submit" value="Mentés">
+    <form id="userForm"> 
+        <input type="hidden" id="id"> 
+        <div> 
+            <label>Név*</label>
+            <input type="text" id="nev" placeholder="Név" required> 
+        </div> 
+        <div> 
+            <label>Sütemény típusa</label>
+            <select name="sutitipus" id="sutitipus">
+                <option value="">-- Válassz típust --</option>
+                <option value="vegyes">vegyes</option>
+                <option value="sós teasütemény">sós teasütemény</option>
+                <option value="bejgli">bejgli</option>
+                <option value="torta">torta</option>
+                <option value="tortaszelet">tortaszelet</option>
+                <option value="pite">pite</option>
+                <option value="tejszínes sütemény">tejszínes sütemény</option>
+                <option value="édes teasütemény">édes teasütemény</option>
+                <option value="különleges torta">különleges torta</option>
+                <option value="krémes">krémes</option>
+            </select>
+        </div> 
+        <div> 
+            <label>Díjazott</label>
+            <select name="dijazott" id="dijazott">
+                <option value="">-- Válassz --</option>
+                <option value="igen">igen</option>
+                <option value="nem">nem</option>
+            </select>
+        </div> 
+        <div class="form-action-buttons">
+            <input type="submit" value="Mentés">
+        </div>
+    </form> 
 </div>
-</div> 
-</div> 
-</form> 
-<table> 
-<thead> 
-<tr> 
-<th>Id</th> 
-<th>Név</th> 
-<th>Típus</th> 
-<th width="150">Actions</th> 
-</tr> 
-</thead> 
-<tbody id="userTable"></tbody> 
-</table> 
-</div> 
+
+<div class="suti-table"> <table class="list"> 
+        <thead> 
+            <tr> 
+                <th>Id</th> 
+                <th>Sütemény neve</th> 
+                <th>Sütemény típusa</th> 
+                <th>Díjazott</th> 
+                <th>Műveletek</th> 
+            </tr> 
+        </thead> 
+        <tbody id="userTable"></tbody> 
+    </table> 
+</div>
+
+<footer>
+    <p>Készítette: Harmatiné Pásztor Éva (JBDAQO) - Deák Dávid (OPFHRV)</p>
+</footer>
+
 <script src="fetchapi_js.js"></script> 
+<script>
+function toggleMenu() {
+    document.getElementById("mobileMenu").classList.toggle("show");
+}
+</script>
+        
+
 </body> 
 </html> 
