@@ -31,7 +31,7 @@ function DigitalClockApp() {
 
   return (
     <div className="App">
-      <h1>🕒 Digitális Óra</h1>
+      <h1 style={{ marginBottom: "15px" }}>🕒 Digitális Óra</h1>
       <div className="clock">{formatTime(time)}</div>
       <p>{time.toLocaleDateString("hu-HU",{
         year: "numeric",
