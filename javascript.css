@@ -1,18 +1,19 @@
 .suti-form {/* Fenti táblázat ahova az új süteményeket visszük fel */
-border-style: none;
-background-color: #d4b3a3;
-padding: 10px;
-margin: 40px auto 0 auto;
-width: 50%;
+    border-style: none;
+    background-color: #d4b3a3;
+    padding: 20px; /* Megnövelve, hogy kényelmesebb legyen */
+    margin: 40px auto 20px auto; /* Alsó margó hozzáadva a táblázat előtt */
+    width: 80%; /* EGYSÉGESÍTVE */
+    max-width: 1000px; /* EGYSÉGESÍTVE */
+    box-sizing: border-box;
 }
 .suti-table {/* Alsó táblázat ahol a lista van */
 border-style: none;
-padding: 20px;
-margin: 30px auto 120px auto;
-width: 90%; /* Majdnem teljes szélesség */
-max-width: 1200px;   /* De ne legyen túl széles óriási monitoron */
-min-width: 300px;    /* Ez megakadályozza, hogy kicsinyítésnél eltűnjön */
-overflow-x: auto;    /* Ha mégis túl kicsi a hely, legyen görgetősáv, ne tűnjön el */
+    padding: 0; 
+    margin: 0 auto 120px auto;
+    width: 80%; /* EGYSÉGESÍTVE */
+    max-width: 1000px; /* EGYSÉGESÍTVE */
+    overflow-x: auto;    /* Ha mégis túl kicsi a hely, legyen görgetősáv, ne tűnjön el */
 
 }
 

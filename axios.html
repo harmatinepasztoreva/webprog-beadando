@@ -1,1 +1,49 @@
-<h1>Később fejlesztem</h1>
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <title>React CRUD</title>
+    <link rel="stylesheet" href="menu.css">
+    <link rel="stylesheet" href="src/React.css"> </head>
+
+</head>
+<body>
+<div class="topbar">
+    <header>
+        <div class="header-top">
+            <img src="logo.png" alt="Édes Liget Cukrászda logó" class="logo">
+            <h1>Web programozás-1 Előadás Házi feladat</h1>
+            <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+        </div>
+    </header>
+
+    <nav class="menu" id="mobileMenu">
+       <a href="index.html" >Főoldal</a>
+        <a href="javascript.html">JavaScript</a>
+        <a href="react.html" >React</a>
+        <a href="spa.html">SPA</a>
+        <a href="fetchapi.html">Fetch API</a>
+        <a href="axios.html" class="active" >Axios</a>
+        <a href="oojs.html">OOJS</a>
+    </nav>
+</div>
+<main> 
+    <div id="root"></div>
+</main>
+
+<footer>
+    <p>Készítette: Harmatiné Pásztor Éva (JBDAQO) - Deák Dávid (OPFHRV)</p>
+
+</footer>
+<script type="module" src="/src/main.jsx"></script>
+
+
+<script>
+  function toggleMenu() {
+    const menu = document.getElementById("mobileMenu");
+    menu.classList.toggle("show");
+  }
+</script>
+
+</body>
+</html>
