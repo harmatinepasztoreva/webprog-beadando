@@ -32,17 +32,19 @@ function Counter() {
 
   return (
     <>
-      <div>
+      <div style={{ marginBottom: "15px" }}>
         <button onClick={prevStep}>-</button>
-        <span>Ugrások száma: {step}</span>
+        <span>Lépésköz: {step}</span>
         <button onClick={nextStep}>+</button>
+        
       </div>
       <div>
         <button onClick={prevCount}>-</button>
-        <span>Számlálás: {count}</span>
+        <span>Eltolt napok száma: {count}</span>
         <button onClick={nextCount}>+</button>
       </div>
       <p>
+        <strong>
         <span>
           {count === 0
             ? `Ma van `
@@ -55,6 +57,7 @@ function Counter() {
           month: "long", 
           day: "numeric",
           weekday: "long",})}</span>
+          </strong>
       </p>
     </>
   );
