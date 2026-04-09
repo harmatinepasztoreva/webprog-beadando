@@ -4,7 +4,7 @@ import "./React.css"; // Ez a közös stílusfájl az src mappában
 
 function SutiApp() {
     const [sutik, setSutik] = useState([]);
-    const [urlap, setUrlap] = useState({ id: '', nev: '', tipus: '', dijazott: 0 });
+    const [urlap, setUrlap] = useState({ id: '', nev: '', tipus: '', dijazott: '' });
     const [szerkesztesMod, setSzerkesztesMod] = useState(false);
     const [uzenet, setUzenet] = useState("");
 
@@ -116,13 +116,15 @@ function SutiApp() {
                     </div>
                     <div>
                         <label>Díjazott</label>
-                        <select 
-                            value={urlap.dijazott === "igen" || urlap.dijazott === -1 ? "igen" : "nem"} 
-                            onChange={(e) => setUrlap({...urlap, dijazott: e.target.value})}
-                        >
-                            <option value="nem">nem</option>
-                            <option value="igen">igen</option>
-                        </select>
+                            <select 
+                                value={urlap.dijazott === -1 || urlap.dijazott === "igen" ? "igen" : (urlap.dijazott === 0 || urlap.dijazott === "nem" ? "nem" : "")} 
+                                onChange={(e) => setUrlap({...urlap, dijazott: e.target.value})}
+                                required
+                            >
+                                <option value="">-- Válassz --</option>
+                                <option value="nem">nem</option>
+                                <option value="igen">igen</option>
+                            </select>
                     </div>
                     <div className="form-action-buttons">
                         <button type="submit">Mentés</button>
