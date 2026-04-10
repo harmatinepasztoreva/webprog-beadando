@@ -1,31 +1,53 @@
-
-<header>
-        <meta charset="UTF-8">
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Édes Liget - OOJS</title>
     <link rel="stylesheet" href="menu.css">
+    <link rel="stylesheet" href="oojs.css">
+</head>
+<body>
+    <header class="full-width-header">
         <div class="header-top">
-            <img src="logo.png" alt="Édes Liget Cukrászda logó" class="logo">
+            <img src="logo.png" alt="Logó" class="logo">
             <h1>Web programozás-1 Előadás Házi feladat</h1>
         </div>
+        <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+        <nav class="menu" id="mobileMenu">
+            <a href="index.html">Főoldal</a>
+            <a href="javascript.html">JavaScript</a>
+            <a href="react.html">React</a>
+            <a href="spa.html">SPA</a>
+            <a href="fetchapi.html">Fetch API</a>
+            <a href="axios.html">Axios</a>
+            <a href="oojs.html" class="active">OOJS</a>
+        </nav>
     </header>
-<body>
-    <button class="menu-toggle" onclick="toggleMenu()">☰</button>
 
-    <nav class="menu" id="mobileMenu">
-        <a href="index.html">Főoldal</a>
-        <a href="javascript.html">JavaScript</a>
-        <a href="react.html">React</a>
-        <a href="spa.html">SPA</a>
-        <a href="fetchapi.html">Fetch API</a>
-        <a href="axios.html">Axios</a>
-        <a href="oojs.html"class="active">OOJS</a>
+  <main class="app-container">
+        <div class="title-panel">
+            <h2>Szerencsesüti Implementáció</h2>
+        </div>
 
-    </nav>
-</div>
-<h1>Később fejlesztem</h1>
+        <div class="cookie-stage">
+            <div id="cookie-target">
+                </div>
+        </div>
+
+        <button id="reset-btn" class="action-btn" style="display: none;">Új sütit kérek!</button>
+        
+        <div style="margin-top: 40px; color: #8d6e63; font-size: 0.9rem;">
+            <p>OOP Alapú vezérlés | CSS Animációk | Reszponzív dizájn</p>
+        </div>
+    </main>
+
+    <script src="oojscript.js"></script>
+    <script>
+        // Az eredeti reset gomb logikád marad, csak az új osztályt használjuk
+        document.getElementById('reset-btn').addEventListener('click', () => {
+            cookieApp.reset();
+        });
+    </script>
 </body>
-
-<script>
-function toggleMenu() {
-    document.getElementById("mobileMenu").classList.toggle("show");
-}
-</script>
+</html>

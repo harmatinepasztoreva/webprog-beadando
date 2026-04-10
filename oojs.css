@@ -1,0 +1,142 @@
+/* oojs.css - Grafikai központú verzió */
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.8)), 
+                url('https://www.transparenttextures.com/patterns/marble-art.png');
+    background-color: #f4e9d9;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+}
+
+/* Fő kártya tartály */
+.app-container {
+    background: rgba(255, 255, 255, 0.6);
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.1);
+    border: 1px solid rgba(255,255,255,0.8);
+    padding: 40px;
+    margin-top: 50px;
+    max-width: 900px;
+    width: 90%;
+    text-align: center;
+}
+
+/* Cím panel (mint a képen) */
+.title-panel {
+    background: #e9dcc9;
+    padding: 10px 30px;
+    border-radius: 15px;
+    display: inline-block;
+    box-shadow: inset 0 2px 5px rgba(0,0,0,0.1);
+    margin-bottom: 30px;
+}
+
+.title-panel h2 {
+    margin: 0;
+    color: #5d4037;
+    font-size: 1.5rem;
+}
+
+/* SÜTI MEGJELENÍTÉSE */
+.cookie-stage {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 250px;
+    position: relative;
+}
+
+.cookie-container {
+    position: relative;
+    width: 200px;
+    height: 150px;
+    cursor: pointer;
+    z-index: 10;
+}
+
+.cookie-half {
+    width: 140px;
+    height: 120px;
+    background: radial-gradient(circle at 30% 30%, #f7d99a, #d4a331);
+    position: absolute;
+    transition: all 0.7s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+    /* Élethűbb "hajtogatott" forma */
+    border-radius: 63% 37% 54% 46% / 55% 48% 52% 45%;
+    box-shadow: inset -10px -10px 20px rgba(0,0,0,0.2), 5px 15px 30px rgba(0,0,0,0.1);
+}
+
+.left { 
+    left: 0; 
+    transform: rotate(-10deg);
+    border-right: 2px solid rgba(0,0,0,0.1);
+}
+
+.right { 
+    right: 0; 
+    transform: scaleX(-1) rotate(-10deg);
+    filter: brightness(0.9);
+}
+
+/* Nyitás animáció */
+.cookie-container.open .left {
+    transform: translate(-100px, -50px) rotate(-40deg);
+    opacity: 0;
+}
+
+.cookie-container.open .right {
+    transform: scaleX(-1) translate(-100px, 50px) rotate(-40deg);
+    opacity: 0;
+}
+
+/* A papír (Scroll stílus) */
+.fortune-paper {
+    position: absolute;
+    background: #fff;
+    padding: 15px 25px;
+    border-radius: 2px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    transform: scale(0);
+    transition: all 0.6s 0.3s ease;
+    max-width: 250px;
+    font-family: 'Georgia', serif;
+    font-style: italic;
+    border-left: 10px solid #d4a331;
+}
+
+.cookie-container.open + .fortune-paper {
+    transform: scale(1) translateY(-20px);
+}
+
+/* Gomb stílus */
+.action-btn {
+    margin-top: 30px;
+    background: #c99a2e;
+    color: white;
+    border: none;
+    padding: 12px 30px;
+    border-radius: 50px;
+    font-size: 1rem;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(201, 154, 46, 0.4);
+    transition: 0.3s;
+}
+
+.action-btn:hover {
+    background: #a67c22;
+    transform: translateY(-2px);
+}
+
+.shake {
+    animation: shakeAnim 0.4s infinite;
+}
+
+@keyframes shakeAnim {
+    0% { transform: rotate(-10deg) translate(0,0); }
+    50% { transform: rotate(-8deg) translate(2px, 2px); }
+    100% { transform: rotate(-10deg) translate(0,0); }
+}
