@@ -1,62 +1,105 @@
-/* oojs.css - Grafikai központú verzió */
+* {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
 
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background: linear-gradient(rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.8)), 
-                url('https://www.transparenttextures.com/patterns/marble-art.png');
-    background-color: #f4e9d9;
+    background:
+        linear-gradient(rgba(248, 244, 238, 0.92), rgba(248, 244, 238, 0.92)),
+        url('https://www.transparenttextures.com/patterns/cream-paper.png');
+    background-color: #f8e8d0;
+    color: #5b3a29;
     display: flex;
     flex-direction: column;
-    align-items: center;
     min-height: 100vh;
-    margin: 0;
 }
 
-/* Fő kártya tartály */
-.app-container {
-    background: rgba(255, 255, 255, 0.6);
-    backdrop-filter: blur(10px);
-    border-radius: 20px;
-    box-shadow: 0 20px 50px rgba(0,0,0,0.1);
-    border: 1px solid rgba(255,255,255,0.8);
-    padding: 40px;
-    margin-top: 50px;
-    max-width: 900px;
-    width: 90%;
-    text-align: center;
-}
 
-/* Cím panel (mint a képen) */
-.title-panel {
-    background: #e9dcc9;
-    padding: 10px 30px;
-    border-radius: 15px;
-    display: inline-block;
-    box-shadow: inset 0 2px 5px rgba(0,0,0,0.1);
-    margin-bottom: 30px;
-}
-
-.title-panel h2 {
-    margin: 0;
-    color: #5d4037;
-    font-size: 1.5rem;
-}
-
-/* SÜTI MEGJELENÍTÉSE */
-.cookie-stage {
+/* Középső tartalom a fejléc és footer között */
+.page-content {
+    flex: 1;
+    width: 100%;
+    max-width: none;
+    margin: 0 auto;
+    padding: 20px 20px 80px;
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 250px;
+    background-color: #f8e8d0;
+}
+
+/* Fő OOJS panel */
+.oojs-wrapper {
+    width: 100%;
+    max-width: 900px;
+    min-height: auto;
+    background: rgba(255, 255, 255, 0.72);
+    border: 1px solid rgba(120, 78, 49, 0.12);
+    border-radius: 28px;
+    box-shadow: 0 18px 45px rgba(93, 64, 55, 0.12);
+    backdrop-filter: blur(8px);
+    padding: 25px 20px 20px;
+    text-align: center;
     position: relative;
 }
 
+/* Címblokk */
+.title-panel {
+    max-width: 620px;
+    margin: 0 auto 15px;
+    background: linear-gradient(180deg, #eadfce 0%, #dfcfb8 100%);
+    border-radius: 20px;
+    padding: 12px 18px;
+    box-shadow:
+        inset 0 2px 6px rgba(255, 255, 255, 0.45),
+        0 8px 20px rgba(121, 85, 72, 0.10);
+}
+
+.title-panel h2 {
+    margin: 0 0 8px;
+    color: #6b4331;
+    font-size: 1.6rem;
+}
+
+.title-panel p {
+    margin: 0;
+    color: #8a6a5c;
+    font-size: 1rem;
+}
+
+/* Süti színpad */
+.cookie-stage {
+    position: relative;
+    min-height: 180px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 10px 0 15px;
+}
+
+.cookie-glow {
+    position: absolute;
+    width: 220px;
+    height: 220px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(212, 163, 49, 0.18) 0%, rgba(212, 163, 49, 0.05) 45%, rgba(212, 163, 49, 0) 75%);
+    filter: blur(6px);
+}
+
+/* A JS által beszúrt cookie elem */
 .cookie-container {
     position: relative;
-    width: 200px;
+    width: 220px;
     height: 150px;
     cursor: pointer;
-    z-index: 10;
+    z-index: 2;
 }
 
 .cookie-half {
@@ -65,24 +108,24 @@ body {
     background: radial-gradient(circle at 30% 30%, #f7d99a, #d4a331);
     position: absolute;
     transition: all 0.7s cubic-bezier(0.68, -0.55, 0.27, 1.55);
-    /* Élethűbb "hajtogatott" forma */
     border-radius: 63% 37% 54% 46% / 55% 48% 52% 45%;
-    box-shadow: inset -10px -10px 20px rgba(0,0,0,0.2), 5px 15px 30px rgba(0,0,0,0.1);
+    box-shadow:
+        inset -10px -10px 20px rgba(0, 0, 0, 0.15),
+        0 12px 24px rgba(93, 64, 55, 0.18);
 }
 
-.left { 
-    left: 0; 
+.left {
+    left: 0;
     transform: rotate(-10deg);
-    border-right: 2px solid rgba(0,0,0,0.1);
+    border-right: 2px solid rgba(0, 0, 0, 0.08);
 }
 
-.right { 
-    right: 0; 
+.right {
+    right: 0;
     transform: scaleX(-1) rotate(-10deg);
-    filter: brightness(0.9);
+    filter: brightness(0.95);
 }
 
-/* Nyitás animáció */
 .cookie-container.open .left {
     transform: translate(-100px, -50px) rotate(-40deg);
     opacity: 0;
@@ -93,50 +136,156 @@ body {
     opacity: 0;
 }
 
-/* A papír (Scroll stílus) */
+/* Jóslat papír */
 .fortune-paper {
     position: absolute;
-    background: #fff;
-    padding: 15px 25px;
-    border-radius: 2px;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    background: linear-gradient(180deg, #fffdf8 0%, #f8f1e7 100%);
+    padding: 16px 24px;
+    border-radius: 10px;
+    box-shadow: 0 10px 24px rgba(93, 64, 55, 0.16);
     transform: scale(0);
     transition: all 0.6s 0.3s ease;
-    max-width: 250px;
+    max-width: 280px;
     font-family: 'Georgia', serif;
     font-style: italic;
-    border-left: 10px solid #d4a331;
+    font-size: 1rem;
+    color: #6d4c41;
+    border-left: 8px solid #c99a2e;
+    z-index: 1;
 }
 
 .cookie-container.open + .fortune-paper {
     transform: scale(1) translateY(-20px);
 }
 
-/* Gomb stílus */
+/* Gomb */
 .action-btn {
-    margin-top: 30px;
-    background: #c99a2e;
+    margin-top: 10px;
+    background: linear-gradient(180deg, #c99a2e 0%, #a97820 100%);
     color: white;
     border: none;
-    padding: 12px 30px;
-    border-radius: 50px;
-    font-size: 1rem;
+    padding: 12px 28px;
+    border-radius: 999px;
+    font-size: 0.95rem;
+    font-weight: 600;
     cursor: pointer;
-    box-shadow: 0 4px 15px rgba(201, 154, 46, 0.4);
-    transition: 0.3s;
+    box-shadow: 0 8px 20px rgba(201, 154, 46, 0.30);
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 
 .action-btn:hover {
-    background: #a67c22;
-    transform: translateY(-2px);
+    transform: translateY(-3px);
+    box-shadow: 0 12px 24px rgba(201, 154, 46, 0.36);
 }
 
+/* Alsó információs sáv */
+.info-strip {
+    margin-top: 15px;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.info-strip span {
+    background: #f1e5d6;
+    color: #7b5a4d;
+    padding: 10px 16px;
+    border-radius: 999px;
+    font-size: 0.95rem;
+    box-shadow: inset 0 1px 2px rgba(255, 255, 255, 0.5);
+}
+
+/* Footer */
+.site-footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background: #7a4526;
+    color: #fff8ef;
+    text-align: center;
+    padding: 14px 20px;
+    box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.12);
+    z-index: 1000;
+}
+
+.site-footer p {
+    margin: 0;
+    font-size: 0.95rem;
+}
+
+/* Hover animáció */
 .shake {
     animation: shakeAnim 0.4s infinite;
 }
 
 @keyframes shakeAnim {
-    0% { transform: rotate(-10deg) translate(0,0); }
-    50% { transform: rotate(-8deg) translate(2px, 2px); }
-    100% { transform: rotate(-10deg) translate(0,0); }
+    0% {
+        transform: rotate(-10deg) translate(0, 0);
+    }
+    50% {
+        transform: rotate(-8deg) translate(2px, 2px);
+    }
+    100% {
+        transform: rotate(-10deg) translate(0, 0);
+    }
+}
+
+/* Reszponzív */
+@media (max-width: 768px) {
+    .page-content {
+        padding: 15px 12px 90px;
+        align-items: flex-start;
+    }
+
+    .oojs-wrapper {
+        padding: 20px 14px 20px;
+        border-radius: 22px;
+    }
+
+    .title-panel {
+        padding: 10px 14px;
+    }
+
+    .title-panel h2 {
+        font-size: 1.3rem;
+    }
+
+    .title-panel p {
+        font-size: 0.9rem;
+    }
+
+    .cookie-stage {
+        min-height: 170px;
+    }
+
+    .cookie-container {
+        width: 180px;
+        height: 130px;
+    }
+
+    .cookie-half {
+        width: 115px;
+        height: 100px;
+    }
+
+    .fortune-paper {
+        max-width: 220px;
+        font-size: 0.95rem;
+        padding: 12px 18px;
+    }
+
+    .info-strip {
+        gap: 8px;
+    }
+
+    .info-strip span {
+        font-size: 0.85rem;
+        padding: 8px 12px;
+    }
+
+    .site-footer {
+        padding: 12px 10px;
+    }
 }
