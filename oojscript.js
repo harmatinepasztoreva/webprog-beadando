@@ -10,7 +10,7 @@ class BaseComponent {
     createInfoBadge() {
         const badge = document.createElement("div");
         badge.id = "oojs-badge";
-        badge.textContent = "OOJS öröklődés aktív";
+      
         badge.style.position = "fixed";
         badge.style.right = "12px";
         badge.style.bottom = "70px";
