@@ -8,7 +8,7 @@ function SutiApp() {
     const [szerkesztesMod, setSzerkesztesMod] = useState(false);
     const [uzenet, setUzenet] = useState("");
 
-    const API_URL = "http://localhost:8000/read.php";
+    const API_URL = "read.php";
 
     const adatokBetoltese = async () => {
         try {
